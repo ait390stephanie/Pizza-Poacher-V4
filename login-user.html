@@ -1,0 +1,52 @@
+<div class="container">
+  <form name="loginForm" novalidate role="form">
+  
+    <!-- EMAIL -->
+    <div class="form-group">
+	  <label for="userEmail">Enter your registered email:</label>
+	  <span class="hint-text" data-ng-show="!loginForm.userEmail.$dirty && loginForm.userEmail.$invalid">
+	    <i>(required)</i>
+		</span>
+	  <span class="error-text" data-ng-show="loginForm.userEmail.$dirty && loginForm.userEmail.$invalid">
+	    <i>(Invalid: 	
+	  	  <span data-ng-show="loginForm.userEmail.$error.required">Email is required.</span>
+	  	  <span data-ng-show="loginForm.userEmail.$error.email">This is not an email address.</span>
+	  	  )</i>
+		</span>
+	  <input type="email" class="form-control" name="userEmail" placeholder="Enter email"
+		data-ng-model="newUser.email" required>
+	  </div> 			    			
+    
+    <!-- PASSWORD -->
+    <div class="form-group">
+      <label for="userPassword">Enter your password:</label>
+      <span class="hint-text" data-ng-show="!loginForm.userPassword.$dirty && loginForm.userPassword.$invalid">
+	    <i>(required)</i>
+		</span>
+	  <span class="error-text" data-ng-show="loginForm.userPassword.$dirty && loginForm.userPassword.$invalid">
+	    <i>(Invalid: 	
+	  	  <span data-ng-show="loginForm.userPassword.$error.required">Password is required.</span>
+	  	  )</i>
+		</span>
+      <input type="password" class="form-control" name="userPassword" placeholder="Enter password"
+        data-ng-model="newUser.password" required>
+      </div>
+      
+      <!-- SUBMIT -->
+      <div class="form-group">
+  	  	<button type="submit" class="btn btn-xs  btn-success" 
+	      data-ng-click="loginCtrl.login()"
+	      data-ng-disabled="loginCtrl.logging || loginForm.$invalid " >
+        <span class="glyphicon glyphicon-log-in"></span> Login</button>
+      	</div>
+      	
+      <div class="alert alert-danger" role="alert" data-ng-show="loginCtrl.errorMessage!==null">
+        <strong>{{loginCtrl.errorMessage}}</strong> {{loginCtrl.errorDetails}}
+    	</div>	
+
+	<div class="alert alert-success" role="alert" data-ng-show="loginCtrl.loginSuccess">
+        <strong>{{loginCtrl.loginSuccess}}</strong> {{loginCtrl.loginSuccessDetails}}
+    </div>  	
+      
+   	</form>
+ </div>
